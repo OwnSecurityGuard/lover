@@ -1,0 +1,94 @@
+:root {
+  --paper: #f8f3ec;
+  --ink: #1e1b16;
+  --muted: rgba(30, 27, 22, 0.7);
+  --accent: #cb3f2d;
+  --accent2: #2a7b6f;
+  --card: rgba(255, 255, 255, 0.58);
+  --shadow: 0 18px 55px rgba(20, 16, 12, 0.22);
+  --radius: 18px;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "Noto Serif SC", serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.popLayer { position: fixed; inset: 0; pointer-events: none; z-index: 80; }
+.pop { position: absolute; font-family: "Caveat", cursive; font-weight: 700; opacity: 0; transform: translate(-50%, -50%); animation: popFloat 950ms cubic-bezier(.2,.8,.2,1) both; }
+@keyframes popFloat { 0% { opacity: 0; transform: translate(-50%, -20%) scale(0.92); } 18% { opacity: 0.95; } 100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), calc(-50% - 64px)) scale(1.05); } }
+.toast { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 90; max-width: min(520px, calc(100vw - 24px)); padding: 10px 12px; border-radius: 14px; background: rgba(18, 16, 13, 0.86); color: rgba(255, 255, 255, 0.92); font-size: 13px; opacity: 0; transition: opacity 220ms ease, transform 220ms ease; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(-2px); }
+.bg { position: fixed; inset: 0; pointer-events: none; background: radial-gradient(1200px 700px at 80% 10%, rgba(203, 63, 45, 0.12), transparent 55%), radial-gradient(900px 650px at 10% 30%, rgba(42, 123, 111, 0.14), transparent 60%); }
+.topbar { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: linear-gradient(to bottom, rgba(248, 243, 236, 0.92), rgba(248, 243, 236, 0.72)); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(30, 27, 22, 0.08); }
+.brand { display: flex; align-items: center; gap: 12px; }
+.stamp { width: 44px; height: 44px; border-radius: 999px; display: grid; place-items: center; font-weight: 700; background: rgba(203, 63, 45, 0.12); border: 1px solid rgba(203, 63, 45, 0.28); }
+.brandText .cn { font-weight: 700; font-size: 14px; }
+.brandText .en { font-family: "Caveat", cursive; font-size: 15px; color: rgba(30, 27, 22, 0.72); }
+main { padding: 18px 14px 26px; }
+section { max-width: 980px; margin: 0 auto; padding: 18px 0; }
+.heroCard, .quoteDeck, .terminal, .giftCard, .modalCard { border-radius: var(--radius); border: 1px solid rgba(30, 27, 22, 0.12); box-shadow: var(--shadow); }
+.heroCard { position: relative; background: var(--card); padding: 22px 18px; }
+.heroSticker { position: absolute; top: 14px; right: 14px; padding: 10px 12px; border-radius: 16px; border: 1px dashed rgba(30, 27, 22, 0.22); background: rgba(255, 255, 255, 0.55); transform: rotate(4deg); font-family: "Caveat", cursive; font-weight: 700; font-size: 20px; }
+.heroSticker.awake { border-style: solid; border-color: rgba(42, 123, 111, 0.30); background: rgba(42, 123, 111, 0.10); }
+.title { margin: 10px 0 0; font-size: 30px; }
+.title2 { color: var(--accent); }
+.sub { color: rgba(30, 27, 22, 0.76); }
+.sub2 { font-weight: 600; }
+.pillRow { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.pill { font-size: 12px; padding: 7px 10px; border-radius: 999px; border: 1px solid rgba(30, 27, 22, 0.12); background: rgba(255, 255, 255, 0.42); }
+.hint { margin-top: 16px; display: inline-flex; gap: 10px; padding: 10px 12px; border-radius: 999px; background: rgba(42, 123, 111, 0.10); border: 1px solid rgba(42, 123, 111, 0.22); font-size: 13px; }
+.heroActions { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+.heroEaster { margin-top: 10px; font-size: 12.5px; color: rgba(30, 27, 22, 0.68); }
+.sectionHead h2 { margin: 0; font-size: 20px; }
+.sectionHead p { margin-top: 8px; color: var(--muted); font-size: 13px; }
+.quoteDeck { margin-top: 14px; background: rgba(255, 255, 255, 0.46); overflow: hidden; }
+.deckTop, .deckActions { display: flex; justify-content: space-between; gap: 12px; padding: 12px; background: rgba(248, 243, 236, 0.62); }
+.quoteViewport { position: relative; padding: 14px 12px; min-height: 168px; touch-action: pan-y; }
+.quoteCardLarge { position: relative; border-radius: 18px; border: 1px solid rgba(30, 27, 22, 0.12); background: rgba(255, 255, 255, 0.62); padding: 16px 14px; }
+.quoteEn { font-family: "Caveat", cursive; font-size: 26px; font-weight: 700; }
+.quoteCn { margin-top: 10px; font-size: 14px; color: rgba(30, 27, 22, 0.78); }
+.deckFooter { padding: 10px 12px 14px; color: rgba(30, 27, 22, 0.70); font-size: 12.5px; }
+.terminal { margin-top: 14px; overflow: hidden; background: rgba(18, 16, 13, 0.92); position: relative; }
+.termTop, .termHud, .termActions { padding: 10px 12px; background: rgba(255, 255, 255, 0.04); }
+.termBar { height: 8px; background: rgba(255, 255, 255, 0.06); }
+.termBarFill { height: 100%; width: 0%; background: linear-gradient(90deg, rgba(40, 200, 64, 0.85), rgba(254, 188, 46, 0.85), rgba(255, 91, 87, 0.85)); transition: width 240ms ease; }
+.termBody { padding: 12px; min-height: 170px; font-family: ui-monospace, monospace; color: rgba(255, 255, 255, 0.86); font-size: 12.5px; }
+.termLine.faint { color: rgba(255, 255, 255, 0.55); }
+.termLine.warn { color: rgba(254, 188, 46, 0.95); }
+.termLine.err { color: rgba(255, 91, 87, 0.95); }
+.termLine.ok { color: rgba(40, 200, 64, 0.9); }
+.flashLayer { position: absolute; inset: 90px 0 60px; pointer-events: none; overflow: hidden; }
+.flash { position: absolute; font-family: ui-monospace, monospace; font-size: 12px; padding: 6px 8px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.06); color: rgba(255, 255, 255, 0.78); }
+.hidden { display: none !important; }
+button { font-family: inherit; border: 0; cursor: pointer; }
+.primary { background: linear-gradient(135deg, var(--accent), #e06a2f); color: #fff; padding: 10px 14px; border-radius: 12px; font-weight: 700; }
+.ghost { background: rgba(255, 255, 255, 0.42); color: rgba(30, 27, 22, 0.92); padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(30, 27, 22, 0.12); }
+.giftStage { margin-top: 14px; display: grid; place-items: center; gap: 14px; }
+.giftBox { width: min(320px, 92vw); height: 240px; border-radius: 22px; position: relative; background: transparent; }
+.giftBox .box { position: absolute; left: 50%; top: 56%; transform: translate(-50%, -50%); width: 86%; height: 56%; border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,0.70), rgba(255,255,255,0.42)); }
+.giftBox .lid { position: absolute; left: 50%; top: 32%; transform: translate(-50%, -50%); width: 92%; height: 34%; border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.48)); transform-origin: 15% 85%; transition: transform 700ms cubic-bezier(.2,.9,.2,1); }
+.giftBox .ribbon { position: absolute; left: 50%; top: 56%; transform: translate(-50%, -50%); width: 22px; height: 70%; border-radius: 999px; background: linear-gradient(180deg, rgba(42,123,111,0.92), rgba(42,123,111,0.62)); }
+.giftBox .tag { position: absolute; left: 12%; top: 20%; transform: rotate(-10deg); padding: 10px 12px; border-radius: 14px; background: rgba(248, 243, 236, 0.92); }
+.giftBox.open .lid { transform: translate(-50%, -50%) rotate(-14deg) translateY(-10px); }
+.giftCard { width: min(560px, 94vw); padding: 16px; background: rgba(255, 255, 255, 0.62); }
+.cardBody { margin-top: 12px; display: grid; grid-template-columns: 140px 1fr; gap: 14px; align-items: center; }
+.qr { width: 140px; height: 140px; border-radius: 16px; object-fit: cover; background: rgba(255, 255, 255, 0.6); }
+.code { margin-top: 6px; font-family: ui-monospace, monospace; padding: 10px 12px; border-radius: 14px; background: rgba(18, 16, 13, 0.92); color: rgba(255, 255, 255, 0.92); }
+.copied { margin-top: 10px; font-size: 12px; color: rgba(42, 123, 111, 0.92); display: none; }
+.copied.show { display: block; }
+.footer { max-width: 980px; margin: 0 auto; padding: 22px 6px 26px; text-align: center; color: rgba(30, 27, 22, 0.76); }
+.footerSub { font-family: "Caveat", cursive; font-size: 18px; margin-top: 4px; }
+.modal { border: 0; padding: 0; background: transparent; }
+.modal::backdrop { background: rgba(18, 16, 13, 0.45); }
+.modalCard { width: min(560px, 92vw); background: rgba(248, 243, 236, 0.96); padding: 14px; }
+.fields { margin-top: 12px; display: grid; gap: 10px; }
+.field { display: grid; gap: 8px; }
+select, textarea { font-family: inherit; font-size: 14px; border-radius: 14px; border: 1px solid rgba(30, 27, 22, 0.16); background: rgba(255, 255, 255, 0.60); padding: 10px 12px; }
+.modalActions { margin-top: 12px; display: flex; justify-content: flex-end; gap: 10px; }
+@media (min-width: 700px) { .title { font-size: 38px; } .quoteViewport { min-height: 190px; } }
+@media (max-width: 420px) { .cardBody { grid-template-columns: 1fr; } .qr { width: 100%; height: auto; aspect-ratio: 1 / 1; } }

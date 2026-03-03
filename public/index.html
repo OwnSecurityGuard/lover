@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f8f3ec" />
+    <title>女生节 | Made especially for you</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+    <div class="popLayer" id="popLayer" aria-hidden="true"></div>
+    <div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="stamp">3.7</div>
+        <div class="brandText">
+          <div class="cn">女生节礼物</div>
+          <div class="en">Made especially for you</div>
+        </div>
+      </div>
+      <button class="ghost" id="btnJumpGift" type="button">直接看礼物</button>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div class="heroCard">
+          <button class="heroSticker" id="heroSticker" type="button" aria-label="sticker">Zzz club</button>
+          <p class="kicker">致那位永远天天在睡觉的英语老师</p>
+          <h1 class="title">这不是大型惊喜，<span class="title2">但它很认真</span></h1>
+          <p class="sub">
+            认识太短，我做不出“看完会哭三天三夜”的那种网站——
+            <span class="sub2">但我想让你先被好好看见。</span>
+          </p>
+
+          <div class="pillRow" aria-label="page hints">
+            <span class="pill">中文为主</span>
+            <span class="pill">一点 English</span>
+            <span class="pill">幽默 + 真诚</span>
+          </div>
+
+          <div class="hint"><span class="arrow" aria-hidden="true">↓</span>往下滑，有小惊喜（小到很诚实）</div>
+
+          <div class="heroActions" aria-label="hero actions">
+            <button class="ghost mini" id="btnPat" type="button">拍一下（醒不醒随缘）</button>
+            <button class="primary mini" id="btnStar" type="button">给你加个小星星</button>
+          </div>
+
+          <div class="heroEaster" id="heroEaster">小提示：点一下左上角的 “3.7” 会掉点东西。</div>
+        </div>
+      </section>
+
+      <section class="quotes" id="quotes" aria-label="quotes">
+        <div class="sectionHead">
+          <h2>你提过的书里，有些句子我记下了</h2>
+          <p>我可能记不住所有单词，但我记得你在讲这些话时的语气。</p>
+        </div>
+
+        <div class="quoteDeck" id="quoteDeck" role="group" aria-label="quote deck">
+          <div class="deckTop">
+            <div class="deckMeta"><span id="quoteIndex">1</span>/<span id="quoteTotal">8</span> · 摘录</div>
+            <div class="deckHint">左右滑 / 点按钮</div>
+          </div>
+          <div class="quoteViewport" id="quoteViewport" tabindex="0" aria-label="quote viewport">
+            <div class="quoteStack" aria-hidden="true"></div>
+            <div class="quoteCardLarge" id="quoteCardLarge">
+              <div class="quoteEn" id="quoteEn">加载中…</div>
+              <div class="quoteCn" id="quoteCn"></div>
+            </div>
+          </div>
+          <div class="deckActions">
+            <button class="ghost" id="btnPrevQuote" type="button">上一句</button>
+            <button class="ghost" id="btnAutoQuote" type="button">自动播放：关</button>
+            <button class="primary" id="btnNextQuote" type="button">下一句</button>
+          </div>
+          <div class="deckFooter" id="deckFooter">我会的词不多，但我想把你喜欢的那几句先学会。</div>
+        </div>
+      </section>
+
+      <section class="surprise" id="surprise" aria-label="surprise">
+        <div class="sectionHead">
+          <h2>惊喜生成器</h2>
+          <p>理论上它会给你一个“巨型浪漫”，实践上它更像我：努力但不太会。</p>
+        </div>
+
+        <div class="terminal" role="group" aria-label="generator">
+          <div class="termTop">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="termTitle">girlsday.generator</span>
+          </div>
+
+          <div class="termHud" aria-label="generator hud">
+            <div class="hudLeft"><span class="hudLabel">status</span><span class="hudValue" id="genStatus">idle</span></div>
+            <div class="hudRight"><span class="hudValue" id="genPercent">0%</span></div>
+          </div>
+          <div class="termBar" aria-hidden="true"><div class="termBarFill" id="genBar"></div></div>
+
+          <div class="flashLayer" id="flashLayer" aria-hidden="true"></div>
+
+          <div class="termBody" id="termBody"><div class="termLine faint">点击按钮开始生成…</div></div>
+
+          <div class="termActions" id="termActions"><button class="primary" id="btnStart" type="button">查看惊喜</button></div>
+
+          <div class="termActions hidden" id="afterFailActions">
+            <button class="ghost" id="btnSkip" type="button">跳过（我承受得住）</button>
+            <button class="primary" id="btnFill" type="button">补充数据（帮我一下）</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="gift" id="gift" aria-label="gift">
+        <div class="sectionHead">
+          <h2>礼物在这里</h2>
+          <p>我先把“今天的心意”给你，剩下的“来日方长”我们慢慢攒。</p>
+        </div>
+
+        <div class="giftStage">
+          <button class="giftBox" id="giftBox" type="button" aria-label="open gift">
+            <div class="lid"></div><div class="box"></div><div class="ribbon"></div>
+            <div class="tag"><div class="tagEn">For You</div><div class="tagCn">女生节快乐</div></div>
+          </button>
+
+          <div class="giftCard hidden" id="giftCard" role="group" aria-label="gift card">
+            <div class="cardHead">
+              <div class="cardTitle">盒马电子消费卡</div>
+              <div class="cardSub">愿你吃到喜欢的味道，也睡到想睡的觉。</div>
+            </div>
+
+            <div class="cardBody">
+              <img class="qr" id="qrImg" alt="gift code" />
+              <div class="codeBlock">
+                <div class="codeLabel">兑换码 / Code</div>
+                <div class="code" id="giftCode">加载中…</div>
+                <button class="primary" id="btnCopy" type="button">一键复制</button>
+                <div class="copied" id="copied">已复制。你负责花，我负责开心。</div>
+              </div>
+            </div>
+
+            <div class="cardFoot"><span class="tiny">PS: 这份礼物不大，但我很想把“更大的惊喜”留给以后。</span></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer"><div class="footerLine">Happy Girls' Day!</div><div class="footerSub">If you're smiling, it works.</div></footer>
+    </main>
+
+    <dialog class="modal" id="modal">
+      <form class="modalCard" id="profileForm" method="dialog">
+        <div class="modalHead">
+          <div><div class="modalTitle">补充一点数据</div><div class="modalSub">不是查户口，是想让下次的惊喜更像你。</div></div>
+          <button class="x" id="btnClose" type="button" aria-label="close">×</button>
+        </div>
+
+        <div class="fields">
+          <label class="field">
+            <span>你更偏爱哪种口味？</span>
+            <select name="flavor" required><option value="">请选择</option><option>清淡</option><option>重口</option><option>甜口</option><option>酸辣</option><option>无辣不欢</option></select>
+          </label>
+          <label class="field">
+            <span>你更喜欢哪类饮料？</span>
+            <select name="drink" required><option value="">请选择</option><option>咖啡</option><option>奶茶</option><option>气泡水</option><option>果汁</option><option>白开水（强者）</option></select>
+          </label>
+          <label class="field">
+            <span>你更喜欢的甜品风格？</span>
+            <select name="dessert"><option value="">可选</option><option>奶油</option><option>芝士</option><option>巧克力</option><option>水果</option><option>不太爱甜</option></select>
+          </label>
+          <label class="field">
+            <span>周末更像哪种你？</span>
+            <select name="weekend"><option value="">可选</option><option>补觉型</option><option>出门放风型</option><option>宅家充电型</option><option>临时起意型</option></select>
+          </label>
+          <label class="field">
+            <span>一句“我可以记一辈子”的话（可选）</span>
+            <textarea name="oneLine" rows="3" placeholder="比如：今天也要对自己好一点"></textarea>
+          </label>
+        </div>
+
+        <div class="modalActions"><button class="ghost" type="button" id="btnCancel">我先不填</button><button class="primary" type="submit" id="btnSubmit">提交数据</button></div>
+      </form>
+    </dialog>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
